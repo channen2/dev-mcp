@@ -20,6 +20,15 @@ Local stdio server: runs on your machine, launched by your MCP client. Not distr
 | `jira_add_comment` | Jira | write | Add a comment to an issue |
 | `slack_post_message` | Slack | write | Post a message to a channel |
 
+## Automated workflow: PR review
+
+The individual tools above chain into a full PR review workflow — inspect the PR and its CI checks, decide a verdict, post the review, sync the linked Jira ticket, and notify Slack. It's available two ways, at two different layers:
+
+- **MCP prompt (`pr_review`)** — defined in `src/prompts.ts`, part of the MCP protocol itself. It's **user-triggered**: surfaced as a slash command / menu item by any MCP host that supports prompts (e.g. `/mcp__devflow-mcp__pr_review` in Claude Code). Works in any MCP client this server connects to, not just Claude Code.
+- **Claude Code skill (`pr-review`)** — `.claude/skills/pr-review/SKILL.md`, checked into this repo. It's **matched automatically** from natural language ("review PR #3 and update Jira") without needing the exact slash command name. Claude Code only.
+
+Both drive the same underlying tools and follow the same 5 steps; the skill is just a Claude-Code-native shortcut for triggering the same workflow implicitly.
+
 ## Setup
 
 ```bash
