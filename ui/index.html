@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>devflow-mcp — capabilities</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-row">
+      <div>
+        <h1>devflow<span class="dot">-mcp</span></h1>
+        <div class="subtitle">Tools, prompts &amp; skills exposed by this local MCP server</div>
+      </div>
+      <div class="meta" id="generated-at"></div>
+    </div>
+    <div class="controls">
+      <input id="search" type="text" placeholder="Search by name or description…" autocomplete="off" />
+      <div class="tabs">
+        <div class="tab active" data-tab="tools">Tools <span class="count" id="tool-count">0</span></div>
+        <div class="tab" data-tab="prompts">Prompts <span class="count" id="prompt-count">0</span></div>
+        <div class="tab" data-tab="skills">Skills <span class="count" id="skill-count">0</span></div>
+      </div>
+    </div>
+  </header>
+  <main id="main"></main>
+  <footer>Generated from the live MCP server + .claude/skills — run <code>npm run ui:build</code> to refresh.</footer>
+  <script src="app.js"></script>
+</body>
+</html>

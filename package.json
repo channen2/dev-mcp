@@ -10,7 +10,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/server.ts",
-    "inspector": "npx @modelcontextprotocol/inspector tsx src/server.ts"
+    "inspector": "npx @modelcontextprotocol/inspector tsx src/server.ts",
+    "ui:build": "tsx scripts/build-catalog.ts",
+    "ui": "npm run ui:build && node scripts/serve-ui.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",

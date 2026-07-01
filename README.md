@@ -87,6 +87,16 @@ npm run dev         # run directly with tsx, no build step
 npm run inspector    # open MCP Inspector against the dev server
 ```
 
+## Capabilities UI
+
+A minimal static dashboard listing every tool, prompt, and skill this server exposes — introspected live from the server (not hand-maintained) plus `.claude/skills/*/SKILL.md`.
+
+```bash
+npm run ui   # builds ui/catalog.json, then serves ui/ at http://localhost:4173
+```
+
+Run `npm run ui:build` alone to just regenerate `ui/catalog.json` (e.g. after adding a tool).
+
 ## Next steps
 
 - **GitLab** wasn't wired up in v1 — same shape (`src/<service>.ts` + tools in `src/tools.ts`) if you need it later.
