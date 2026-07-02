@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in */src/tools.ts|src/tools.ts|*/src/prompts.ts|src/prompts.ts|*/.claude/skills/*/SKILL.md|.claude/skills/*/SKILL.md) d=$(dirname \"$f\"); while [ \"$d\" != \"/\" ] && [ ! -f \"$d/package.json\" ]; do d=$(dirname \"$d\"); done; if [ -f \"$d/package.json\" ]; then (cd \"$d\" && npm run ui:build) >/tmp/devflow-ui-build.log 2>&1 || printf '%s' \"devflow-mcp: ui:build failed after editing $f — see /tmp/devflow-ui-build.log\" | jq -Rs '{systemMessage: .}'; fi ;; esac",
+            "statusMessage": "Syncing devflow-mcp UI catalog..."
+          }
+        ]
+      }
+    ]
+  }
+}
